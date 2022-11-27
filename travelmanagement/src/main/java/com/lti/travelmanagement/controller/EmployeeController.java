@@ -1,6 +1,9 @@
 package com.lti.travelmanagement.controller;
 
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,5 +43,11 @@ public class EmployeeController {
 	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqid,@RequestBody TravelRequest t) {
 		return empservice.updateEmployeeRequest(reqid,t);
 	}
+	
+	@GetMapping("/findtravelrequests/{empid}")
+	public Set<TravelRequest> findAllTravelRequests(@PathVariable("empid")int empid){
+		return empservice.findAllTravelRequests(empid);
+	}
+	
 	
 }

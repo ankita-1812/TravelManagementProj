@@ -1,5 +1,8 @@
 package com.lti.travelmanagement.dao;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -52,4 +55,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return emp;
 		
 	}
-}
+
+	@Override
+	public Set<TravelRequest> findAllTravelRequests(int empid) {
+	
+		Employee e=em.find(Employee.class, empid);
+		return e.getTravelrequest();
+		
+	}
+
+	}

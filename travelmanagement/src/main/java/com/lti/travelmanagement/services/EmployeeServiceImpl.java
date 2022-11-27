@@ -1,5 +1,8 @@
 package com.lti.travelmanagement.services;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		return employeedao.updateEmployeeRequest(reqid,t);
 	}
+
+	@Override
+	public Set<TravelRequest> findAllTravelRequests(int empid) {
+		
+		return employeedao.findAllTravelRequests(empid);
+	}
+
+	
+
+	
+
+
+	
 	
 }

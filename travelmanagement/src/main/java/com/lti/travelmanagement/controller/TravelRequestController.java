@@ -1,5 +1,12 @@
 package com.lti.travelmanagement.controller;
 
-public class TravelRequestController {
+import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.lti.travelmanagement.beans.TravelRequest;
+
+public class TravelRequestController {
+ 
+	
 }
