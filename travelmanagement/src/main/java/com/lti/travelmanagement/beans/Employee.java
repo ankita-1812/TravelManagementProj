@@ -5,9 +5,12 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Employees_travel")
@@ -19,7 +22,8 @@ public class Employee {
 	private String emp_mail;
 	private String emp_addr;
 	private String emp_dept;
-	@OneToMany(mappedBy = "employee" ,cascade=CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(mappedBy = "employee" ,cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private Set<TravelRequest> travelrequest=new HashSet<TravelRequest>();
 	
 	public Set<TravelRequest> getTravelrequest() {

@@ -6,4 +6,5 @@ import com.lti.travelmanagement.beans.TravelRequest;
 public interface EmployeeService {
 	Employee addEmployee(Employee e);
 	Employee addEmployeeRequest(int empid,TravelRequest t);
+	Employee updateEmployeeRequest(int reqid, TravelRequest t);
 }

@@ -26,5 +26,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee addEmployeeRequest(int empid,TravelRequest t) {
 		return employeedao.addEmployeeRequest(empid,t);
 	}
+
+	@Override
+	public Employee updateEmployeeRequest(int reqid, TravelRequest t) {
+		
+		return employeedao.updateEmployeeRequest(reqid,t);
+	}
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.services.EmployeeService;
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -34,4 +35,10 @@ public class EmployeeController {
 	public Employee addEmployeeRequest(@PathVariable("empid") int empid,@RequestBody TravelRequest t) {
 		return empservice.addEmployeeRequest(empid,t);
 	}
+	
+	@PutMapping("/updateemprequest/{reqid}")
+	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqid,@RequestBody TravelRequest t) {
+		return empservice.updateEmployeeRequest(reqid,t);
+	}
+	
 }

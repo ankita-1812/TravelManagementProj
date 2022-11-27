@@ -11,7 +11,8 @@ public class TravelRequest {
 	private String travel_request_s_date;
 	private String travel_request_e_date;
 	private String travel_request_reason;
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="empid_fk")
 	private Employee employee;
 	public TravelRequest() {
 		
