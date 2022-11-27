@@ -1,5 +1,7 @@
 package com.lti.travelmanagement.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class AdminServiceImpl implements AdminService {
 	public boolean deleteEmployee(int adminid, int empid) {
 		
 		return admindao.deleteEmployee(adminid,empid);
+	}
+	@Override
+	public List<Employee> findAllEmployees() {
+		return admindao.findAllEmployees(); 
+		
 	}
 
 }
