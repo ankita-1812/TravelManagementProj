@@ -6,23 +6,21 @@ import javax.persistence.*;
 public class TravelRequest {
 	@Id
 	private int  travel_request_id;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Employee employee;
 	private String travel_request_date;
 	private String travel_request_status;
 	private String travel_request_s_date;
 	private String travel_request_e_date;
 	private String travel_request_reason;
+	@ManyToOne()
+	private Employee employee;
 	public TravelRequest() {
 		
 	}
-	public TravelRequest(int travel_request_id, Employee employee, String travel_request_date,
+	public TravelRequest(int travel_request_id,  String travel_request_date,
 			String travel_request_status, String travel_request_s_date, String travel_request_e_date,
 			String travel_request_reason) {
 		super();
 		this.travel_request_id = travel_request_id;
-		this.employee = employee;
 		this.travel_request_date = travel_request_date;
 		this.travel_request_status = travel_request_status;
 		this.travel_request_s_date = travel_request_s_date;

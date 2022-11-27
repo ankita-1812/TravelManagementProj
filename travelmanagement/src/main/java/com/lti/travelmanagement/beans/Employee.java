@@ -1,5 +1,6 @@
 package com.lti.travelmanagement.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,8 +20,14 @@ public class Employee {
 	private String emp_addr;
 	private String emp_dept;
 	@OneToMany(mappedBy = "employee" ,cascade=CascadeType.ALL)
-	private Set<TravelRequest> travelrequest;
+	private Set<TravelRequest> travelrequest=new HashSet<TravelRequest>();
 	
+	public Set<TravelRequest> getTravelrequest() {
+		return travelrequest;
+	}
+	public void setTravelrequest(TravelRequest t) {
+		this.travelrequest.add(t);
+	}
 	public Employee() {
 		
 	}
@@ -64,12 +71,7 @@ public class Employee {
 	public void setEmp_dept(String emp_dept) {
 		this.emp_dept = emp_dept;
 	}
-	public Set<TravelRequest> getTravelrequest() {
-		return travelrequest;
-	}
-	public void setTravelrequest(Set<TravelRequest> travelrequest) {
-		this.travelrequest = travelrequest;
-	}
+	
 	@Override
 	public String toString() {
 		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_mail=" + emp_mail + ", emp_addr="
