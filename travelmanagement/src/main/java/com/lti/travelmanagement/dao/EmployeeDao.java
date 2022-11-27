@@ -1,5 +1,7 @@
 package com.lti.travelmanagement.dao;
 
-public interface EmployeeDao {
+import com.lti.travelmanagement.beans.Employee;
 
+public interface EmployeeDao {
+	Employee addEmployee(Employee e);
 }

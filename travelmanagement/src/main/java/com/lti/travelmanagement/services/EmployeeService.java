@@ -1,5 +1,7 @@
 package com.lti.travelmanagement.services;
 
-public interface EmployeeService {
+import com.lti.travelmanagement.beans.Employee;
 
+public interface EmployeeService {
+	Employee addEmployee(Employee e);
 }
