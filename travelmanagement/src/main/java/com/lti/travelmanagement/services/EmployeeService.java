@@ -15,4 +15,5 @@ public interface EmployeeService {
 	boolean deleteTravelRequest(int reqId);
 	boolean addEmployeeExpense(int empId, int reqId,TravelExpense travelExpense);
 	boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense);
+	boolean deleteEmployeeExpense(int expenseId);
 }

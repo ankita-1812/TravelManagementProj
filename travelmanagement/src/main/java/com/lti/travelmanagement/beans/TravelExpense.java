@@ -20,17 +20,17 @@ public class TravelExpense {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "TravelRequestId")
 	private TravelRequest travelRequest;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empId")
 	private Employee employee;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adminId")
 	private Admin admin;
-	
+
 	public TravelExpense() {
-		
+
 	}
 
 	public TravelExpense(int travelExpenseId, String travelExpenseDate, String travelExpenseStatus) {
@@ -39,9 +39,6 @@ public class TravelExpense {
 		this.travelExpenseDate = travelExpenseDate;
 		this.travelExpenseStatus = travelExpenseStatus;
 	}
-
-	
-	
 
 	public TravelExpense(int travelExpenseId, String travelExpenseDate, String travelExpenseStatus,
 			TravelRequest travelRequest, Employee employee, Admin admin) {
@@ -86,7 +83,6 @@ public class TravelExpense {
 		this.travelRequest = travelRequest;
 	}
 
-	
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -108,7 +104,5 @@ public class TravelExpense {
 		return "TravelExpense [travelExpenseId=" + travelExpenseId + ", travelExpenseDate=" + travelExpenseDate
 				+ ", travelExpenseStatus=" + travelExpenseStatus + ", travelRequest=" + travelRequest + "]";
 	}
-	
-	
 
 }

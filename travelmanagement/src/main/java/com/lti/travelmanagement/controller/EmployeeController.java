@@ -66,5 +66,10 @@ public class EmployeeController {
 
 	}
 	
+	@DeleteMapping("/deleteempexpense/{expenseid}")
+	public boolean deleteEmployeeExpense(@PathVariable("expenseid") int expenseId) {
+		return empservice.deleteEmployeeExpense(expenseId);
+	}
+	
 	
 }

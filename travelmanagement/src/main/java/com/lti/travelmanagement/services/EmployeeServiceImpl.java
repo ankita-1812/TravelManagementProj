@@ -61,6 +61,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	@Override
+	public boolean deleteEmployeeExpense(int expenseId) {
+		
+		return employeedao.deleteEmployeeExpense(expenseId);
+	}
+
 	
 
 	
