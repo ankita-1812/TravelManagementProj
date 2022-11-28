@@ -76,4 +76,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 
+	@Transactional
+	public boolean deleteTravelRequest(int reqId) {
+		TravelRequest travelRequest=em.find(TravelRequest.class, reqId);
+		Query q=em.createQuery("delete from TravelRequest  tr where tr.travelRequestId=:reqId");
+		q.setParameter("reqId", reqId);
+		int rowsDeleted=q.executeUpdate();
+//		
+		if(rowsDeleted==0)
+		return false;
+		
+		return true;
+	}
+
 	}

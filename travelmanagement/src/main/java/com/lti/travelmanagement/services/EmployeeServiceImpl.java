@@ -42,6 +42,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeedao.findAllTravelRequests(empid);
 	}
 
+	@Override
+	public boolean deleteTravelRequest(int reqId) {
+		return employeedao.deleteTravelRequest(reqId);
+		
+	}
+
 	
 
 	

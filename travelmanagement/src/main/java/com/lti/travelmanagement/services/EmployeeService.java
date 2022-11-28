@@ -11,4 +11,5 @@ public interface EmployeeService {
 	Employee addEmployeeRequest(int empid,TravelRequest t);
 	Employee updateEmployeeRequest(int reqid, TravelRequest t);
 	Set<TravelRequest> findAllTravelRequests(int empid);
+	boolean deleteTravelRequest(int reqId);
 }
