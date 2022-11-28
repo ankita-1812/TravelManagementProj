@@ -12,7 +12,7 @@ public class TravelRequest {
 	@Column(name = "TravelRequestDate", length = 10)
 	private String travelRequestDate;
 
-	@Column(name = "TravelRequestStatus", length = 10)
+	@Column(name = "TravelRequestStatus", length = 20)
 	private String travelRequestStatus;
 
 	@Column(name = "TravelRequestSD", length = 10)

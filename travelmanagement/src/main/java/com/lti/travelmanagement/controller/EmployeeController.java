@@ -35,18 +35,18 @@ public class EmployeeController {
 		return empservice.addEmployee(e);
 	}
 	@PostMapping("/addemprequest/{empid}")
-	public Employee addEmployeeRequest(@PathVariable("empid") int empid,@RequestBody TravelRequest t) {
-		return empservice.addEmployeeRequest(empid,t);
+	public Employee addEmployeeRequest(@PathVariable("empid") int empId,@RequestBody TravelRequest t) {
+		return empservice.addEmployeeRequest(empId,t);
 	}
 	
 	@PutMapping("/updateemprequest/{reqid}")
-	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqid,@RequestBody TravelRequest t) {
-		return empservice.updateEmployeeRequest(reqid,t);
+	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqId,@RequestBody TravelRequest t) {
+		return empservice.updateEmployeeRequest(reqId,t);
 	}
 	
 	@GetMapping("/findtravelrequests/{empid}")
-	public Set<TravelRequest> findAllTravelRequests(@PathVariable("empid")int empid){
-		return empservice.findAllTravelRequests(empid);
+	public Set<TravelRequest> findAllTravelRequests(@PathVariable("empid")int empId){
+		return empservice.findAllTravelRequests(empId);
 	}
 	
 	

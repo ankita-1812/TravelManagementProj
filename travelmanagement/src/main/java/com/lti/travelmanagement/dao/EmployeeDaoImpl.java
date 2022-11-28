@@ -1,10 +1,13 @@
 package com.lti.travelmanagement.dao;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -32,35 +35,44 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 
 	@Transactional
-	public Employee addEmployeeRequest(int empid, TravelRequest t) {
+	public Employee addEmployeeRequest(int empId, TravelRequest t) {
 		
-		Employee e=em.find(Employee.class, empid);
+		em.persist(t);
+		Employee e=em.find(Employee.class, empId);
 		
-		e.setTravelrequest(t);
 		t.setEmployee(e);
 		return e;
 	}
 
 	@Transactional
-	public Employee updateEmployeeRequest(int reqid, TravelRequest t) {
+	public Employee updateEmployeeRequest(int reqId, TravelRequest t) {
 		
-		TravelRequest e=em.find(TravelRequest.class, reqid);
-		e.setTravel_request_date(t.getTravel_request_date());
-		e.setTravel_request_status(t.getTravel_request_status());
-		e.setTravel_request_s_date(t.getTravel_request_s_date());
-		e.setTravel_request_e_date(t.getTravel_request_e_date());
-		e.setTravel_request_reason(t.getTravel_request_reason());
+		TravelRequest e=em.find(TravelRequest.class, reqId);
+		e.setTravelRequestDate(t.getTravelRequestDate());
+		e.setTravelRequestStatus(t.getTravelRequestStatus());
+		e.setTravelRequestStartDate(t.getTravelRequestStartDate());
+		e.setTravelRequestEndDate(t.getTravelRequestEndDate());;
+		e.setTravelRequestReason(t.getTravelRequestReason());;
+		e.setDestinationFrom(t.getDestinationFrom());
+		e.setDestinationTo(t.getDestinationTo());
+		e.setEstimatedExpense(t.getEstimatedExpense());
+		e.setModeOfTravel(t.getModeOfTravel());
 		em.merge(e);
-		Employee emp=em.find(Employee.class, e.getEmployee().getEmp_id());
+		System.out.println(e);
+		Employee emp=em.find(Employee.class, e.getEmployee().getEmpId());
 		return emp;
 		
 	}
 
 	@Override
-	public Set<TravelRequest> findAllTravelRequests(int empid) {
-	
-		Employee e=em.find(Employee.class, empid);
-		return e.getTravelrequest();
+	public Set<TravelRequest> findAllTravelRequests(int empId) {
+		
+		Query q= em.createQuery("select tr from TravelRequest as tr where tr.employee.empId=:empId");
+		q.setParameter("empId", empId);
+		
+		List<TravelRequest> trList= (List<TravelRequest>) q.getResultList();
+		Set<TravelRequest> trset = new HashSet<TravelRequest>(trList);  	
+		return trset;
 		
 	}
 
