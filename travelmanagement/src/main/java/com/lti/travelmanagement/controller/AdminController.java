@@ -43,6 +43,16 @@ public class AdminController {
 		return adminservice.updateEmployee(empId,e);
 	}
 	
+	//updatetravelrequeststatus
+	@PutMapping("/updaterequeststatus/{adminid}/{reqid}/{adminstatus}")
+	public boolean updateRequestStatus(@PathVariable("adminid")int adminId,@PathVariable("reqid") int reqId,@PathVariable("adminstatus") String adminStatus) {
+		return adminservice.updateRequestStatus(adminId,reqId,adminStatus);
+	}
 	
+	//updatetravelexpensestatus
+	@PutMapping("/updaterequestexpensestatus/{adminid}/{responseid}/{adminstatus}")
+	public boolean updateRequestExpenseStatus(@PathVariable("adminid") int adminId,@PathVariable("responseid") int responseId,@PathVariable("adminstatus") String adminStatus) {
+		return adminservice.updateRequestExpenseStatus(adminId,responseId,adminStatus);
+	}
 	
 }

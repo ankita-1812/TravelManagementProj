@@ -9,7 +9,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.travelmanagement.beans.Admin;
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.beans.Login;
+import com.lti.travelmanagement.beans.TravelExpense;
+import com.lti.travelmanagement.beans.TravelRequest;
 
 @Repository("admindao")
 public class AdminDaoImpl implements AdminDao {
@@ -21,7 +25,10 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	@Transactional
 	public Employee AddEmployee(Employee e) {
-		
+		String userName=e.getEmpId()+"_"+e.getEmpName();
+		Login l=new Login(userName,"Pass@123","employee");
+		em.persist(l);
+		e.setLogin(l);
 		em.persist(e);
 		return e;
 	}
@@ -60,6 +67,35 @@ public class AdminDaoImpl implements AdminDao {
 
 		e=em.merge(updateEmp);
 		return e;
+	}
+
+
+	@Override
+	@Transactional
+	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) {
+		TravelRequest t=em.find(TravelRequest.class, reqId);
+		Admin admin=em.find(Admin.class, adminId);
+		if(admin==null || t==null)
+			return false;
+
+		t.setAdmin(admin);
+		t.setTravelRequestStatus(adminStatus);
+		em.merge(t);
+		return true;
+	}
+
+
+	@Override
+	@Transactional
+	public boolean updateRequestExpenseStatus(int adminId, int responseId, String adminStatus) {
+		TravelExpense travelExpense=em.find(TravelExpense.class, responseId);
+		Admin admin=em.find(Admin.class, adminId);
+		if(admin==null || travelExpense==null)
+		return false;
+		travelExpense.setAdmin(admin);
+		travelExpense.setTravelExpenseStatus(adminStatus);
+		em.merge(travelExpense);
+		return true;
 	}
 
 	

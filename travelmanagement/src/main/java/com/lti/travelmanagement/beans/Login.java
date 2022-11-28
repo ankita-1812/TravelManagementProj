@@ -9,8 +9,8 @@ import javax.persistence.Table;
 @Table(name = "LOGIN")
 public class Login {
 	@Id
-	@Column(name = "UserName", length = 10)
-	private int userName;
+	@Column(name = "UserName", length = 50)
+	private String userName;
 
 	@Column(name = "UserPassword", length = 10)
 	private String password;
@@ -22,18 +22,18 @@ public class Login {
 
 	}
 
-	public Login(int userName, String password, String userType) {
+	public Login(String userName, String password, String userType) {
 		super();
 		this.userName = userName;
 		this.password = password;
 		this.userType = userType;
 	}
 
-	public int getUserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(int userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 

@@ -14,5 +14,9 @@ public interface AdminDao {
 
 	Employee updateEmployee(int empId,Employee e);
 
+	boolean updateRequestStatus(int adminId, int reqId, String adminStatus);
+
+	boolean updateRequestExpenseStatus(int adminId, int responseId, String adminStatus);
+
 	
 }

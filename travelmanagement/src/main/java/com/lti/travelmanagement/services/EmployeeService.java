@@ -7,6 +7,7 @@ import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 
+
 public interface EmployeeService {
 	Employee addEmployee(Employee e);
 	Employee addEmployeeRequest(int empid,TravelRequest t);
@@ -16,4 +17,5 @@ public interface EmployeeService {
 	boolean addEmployeeExpense(int empId, int reqId,TravelExpense travelExpense);
 	boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense);
 	boolean deleteEmployeeExpense(int expenseId);
+	Set<TravelExpense> findAllTravelExpense(int empId, int reqId);
 }

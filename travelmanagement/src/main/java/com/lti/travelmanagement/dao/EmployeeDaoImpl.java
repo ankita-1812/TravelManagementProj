@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 
@@ -29,9 +30,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	@Transactional
 	public Employee addEmployee(Employee e) {
-		
+		String userName=e.getEmpId()+e.getEmpName();
+		Login l=new Login(userName,"Pass@123","employee");
+		em.persist(l);
+		e.setLogin(l);
 		em.persist(e);
 		return e;
+		
 	}
 
 
@@ -127,6 +132,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return false;
 		
 		return true;
+	}
+
+	public Set<TravelExpense> findAllTravelRequests(int empId, int reqId) {
+		Query q= em.createQuery("select te from TravelExpense as te where te.employee.empId=:empId and te.travelRequest.travelRequestId=:reqId");
+		q.setParameter("empId", empId);
+		q.setParameter("reqId", reqId);
+		
+		List<TravelExpense> trList= (List<TravelExpense>) q.getResultList();
+		Set<TravelExpense> trset = new HashSet<TravelExpense>(trList);  	
+		return trset;
+		
 	}
 
 	}

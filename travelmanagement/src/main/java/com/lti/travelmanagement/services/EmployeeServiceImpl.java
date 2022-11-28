@@ -67,6 +67,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeedao.deleteEmployeeExpense(expenseId);
 	}
 
+	@Override
+	public Set<TravelExpense> findAllTravelExpense(int empId, int reqId) {
+		
+		return employeedao.findAllTravelRequests(empId,reqId);
+	}
+
 	
 
 	

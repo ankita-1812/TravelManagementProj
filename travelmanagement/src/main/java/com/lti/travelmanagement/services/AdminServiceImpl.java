@@ -34,5 +34,15 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminDao.updateEmployee(empId,e);
 	}
+	@Override
+	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) {
+		
+		return adminDao.updateRequestStatus(adminId,reqId,adminStatus);
+	}
+	@Override
+	public boolean updateRequestExpenseStatus(int adminId, int responseId, String adminStatus) {
+		
+		return adminDao.updateRequestExpenseStatus(adminId,responseId,adminStatus);
+	}
 
 }

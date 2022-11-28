@@ -72,4 +72,9 @@ public class EmployeeController {
 	}
 	
 	
+	@GetMapping("/getalltravelexpense/{empid}/{reqid}")
+	public Set<TravelExpense> findAllTravelExpense(@PathVariable("empid") int empId,@PathVariable("reqid") int reqId){
+		return empservice.findAllTravelExpense(empId,reqId);
+	}
+	
 }
