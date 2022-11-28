@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 
 @Repository("employeedao")
@@ -36,11 +37,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Transactional
 	public Employee addEmployeeRequest(int empId, TravelRequest t) {
-		
-		em.persist(t);
 		Employee e=em.find(Employee.class, empId);
-		
 		t.setEmployee(e);
+		em.persist(t);
+	
+		
+		
 		return e;
 	}
 
@@ -85,6 +87,30 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //		
 		if(rowsDeleted==0)
 		return false;
+		
+		return true;
+	}
+
+	@Transactional
+	public boolean addEmployeeExpense(int empId, int reqId,TravelExpense travelExpense) {
+		Employee e=em.find(Employee.class, empId);
+		travelExpense.setEmployee(e);
+		TravelRequest t=em.find(TravelRequest.class, reqId);
+		travelExpense.setTravelRequest(t);
+		if(e==null || t==null)
+			return false;
+		em.persist(travelExpense);
+		return true;
+	}
+
+	@Transactional
+	public boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense) {
+		TravelExpense travelExpenseUpdate=em.find(TravelExpense.class, travelExpenseId);
+		if(travelExpenseUpdate==null)
+			return false;
+		travelExpenseUpdate.setTravelExpenseDate(travelExpense.getTravelExpenseDate());
+		travelExpenseUpdate.setTravelExpenseStatus(travelExpense.getTravelExpenseDate());
+		em.merge(travelExpenseUpdate);
 		
 		return true;
 	}

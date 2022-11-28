@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.dao.EmployeeDaoImpl;
 
@@ -45,6 +46,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public boolean deleteTravelRequest(int reqId) {
 		return employeedao.deleteTravelRequest(reqId);
+		
+	}
+
+	@Override
+	public boolean addEmployeeExpense(int empId, int reqId,TravelExpense travelExpense) {
+		
+		return employeedao.addEmployeeExpense(empId,reqId,travelExpense);
+	}
+
+	@Override
+	public boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense) {
+		return employeedao.updateEmployeeExpense(travelExpenseId,travelExpense); 
 		
 	}
 

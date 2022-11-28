@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.services.EmployeeService;
 
@@ -31,10 +32,10 @@ public class EmployeeController {
 		return "hello";
 	}
 	
-	@PostMapping("/addemp")
-	public Employee addEmployee(@RequestBody Employee e) {
-		return empservice.addEmployee(e);
-	}
+//	@PostMapping("/addemp")
+//	public Employee addEmployee(@RequestBody Employee e) {
+//		return empservice.addEmployee(e);
+//	}
 	@PostMapping("/addemprequest/{empid}")
 	public Employee addEmployeeRequest(@PathVariable("empid") int empId,@RequestBody TravelRequest t) {
 		return empservice.addEmployeeRequest(empId,t);
@@ -53,5 +54,17 @@ public class EmployeeController {
 	public boolean DeleteRequest(@PathVariable("reqid") int reqId) {
 		return empservice.deleteTravelRequest(reqId);
 	}
+	
+	@PostMapping("/addempexpense/{empid}/{reqid}")
+	public boolean addEmployeeExpense(@PathVariable("empid")int empId,@PathVariable("reqid") int reqId,@RequestBody TravelExpense travelExpense) {
+		return empservice.addEmployeeExpense(empId,reqId,travelExpense);
+	}
+	
+	@PutMapping("/updateempexpense/{expenseid}")
+	public boolean updatEmployeeExpense(@PathVariable("expenseid") int travelExpenseId,@RequestBody TravelExpense travelExpense) {
+		return empservice.updateEmployeeExpense(travelExpenseId,travelExpense);
+
+	}
+	
 	
 }

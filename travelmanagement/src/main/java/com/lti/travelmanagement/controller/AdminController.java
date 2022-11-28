@@ -22,7 +22,7 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminservice;
-	@PostMapping("/addemp/{adminid}")
+	@PostMapping("/addemp")
 	public Employee AddEmployee(@RequestBody Employee e ) {
 		return  adminservice.AddEmployee(e);
 		
