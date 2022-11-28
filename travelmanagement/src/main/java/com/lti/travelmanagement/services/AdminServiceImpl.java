@@ -12,22 +12,27 @@ import com.lti.travelmanagement.dao.AdminDao;
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	AdminDao admindao;
+	AdminDao adminDao;
 	@Override
 	public Employee AddEmployee(Employee e) {
 		
-		return admindao.AddEmployee(e);
+		return adminDao.AddEmployee(e);
 		
 	}
 	@Override
-	public boolean deleteEmployee(int adminid, int empid) {
+	public boolean deleteEmployee(int empid) {
 		
-		return admindao.deleteEmployee(adminid,empid);
+		return adminDao.deleteEmployee(empid);
 	}
 	@Override
 	public List<Employee> findAllEmployees() {
-		return admindao.findAllEmployees(); 
+		return adminDao.findAllEmployees(); 
 		
+	}
+	@Override
+	public Employee updateEmployee(int empId,Employee e) {
+		
+		return adminDao.updateEmployee(empId,e);
 	}
 
 }

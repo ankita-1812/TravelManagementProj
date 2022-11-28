@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,15 +27,22 @@ public class AdminController {
 		return  adminservice.AddEmployee(e);
 		
 	}
-	@DeleteMapping("/deleteemp/{adminid}/{empid}")
-	public boolean deleteEmployee(@PathVariable("adminid") int adminid,@PathVariable("empid") int empid) {
-		return adminservice.deleteEmployee(adminid,empid);
+	@DeleteMapping("/deleteemp/{empid}")
+	public boolean deleteEmployee(@PathVariable("empid") int empId) {
+		return adminservice.deleteEmployee(empId);
 	}
 	
 	@GetMapping("/findallemp")
 	public List<Employee> findAllEmployees(){
 		return adminservice.findAllEmployees();
 	}
+	
+	@PutMapping("/updateemp/{empid}")
+	public Employee updateEmployee(@PathVariable("empid") int empId,@RequestBody Employee e) {
+		
+		return adminservice.updateEmployee(empId,e);
+	}
+	
 	
 	
 }

@@ -8,8 +8,10 @@ public interface AdminService {
 
 	Employee AddEmployee(Employee e);
 
-	boolean deleteEmployee(int adminid, int empid);
+	boolean deleteEmployee( int empid);
 
 	List<Employee> findAllEmployees();
+
+	Employee updateEmployee(int empId,Employee e);
 
 }

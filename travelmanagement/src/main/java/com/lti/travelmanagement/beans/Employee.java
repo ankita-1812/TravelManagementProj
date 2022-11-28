@@ -15,9 +15,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(name="EMPLOYEES")
+@Table(name = "EMPLOYEES")
 public class Employee {
 
 	@Id
@@ -35,10 +34,10 @@ public class Employee {
 
 	@Column(name = "EmployeeDept", length = 40)
 	private String empDept;
-	
-	@Column(name = "EmployeeContact",length=10)
+
+	@Column(name = "EmployeeContact", length = 10)
 	private String empContactNo;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Login login;
 
@@ -46,7 +45,6 @@ public class Employee {
 
 	}
 
-	
 	public Employee(int empId, String empName, String empMail, String empAddr, String empDept, String empContactNo) {
 		super();
 		this.empId = empId;
@@ -56,10 +54,6 @@ public class Employee {
 		this.empDept = empDept;
 		this.empContactNo = empContactNo;
 	}
-
-
-	
-
 
 	public Employee(int empId, String empName, String empMail, String empAddr, String empDept, String empContactNo,
 			Login login) {
@@ -73,88 +67,66 @@ public class Employee {
 		this.login = login;
 	}
 
-
 	public Login getLogin() {
 		return login;
 	}
-
 
 	public void setLogin(Login login) {
 		this.login = login;
 	}
 
-
 	public int getEmpId() {
 		return empId;
 	}
-
 
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
 
-
 	public String getEmpName() {
 		return empName;
 	}
-
 
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
 
-
 	public String getEmpMail() {
 		return empMail;
 	}
-
 
 	public void setEmpMail(String empMail) {
 		this.empMail = empMail;
 	}
 
-
 	public String getEmpAddr() {
 		return empAddr;
 	}
-
 
 	public void setEmpAddr(String empAddr) {
 		this.empAddr = empAddr;
 	}
 
-
 	public String getEmpDept() {
 		return empDept;
 	}
-
 
 	public void setEmpDept(String empDept) {
 		this.empDept = empDept;
 	}
 
-
 	public String getEmpContactNo() {
 		return empContactNo;
 	}
 
-
 	public void setEmpContactNo(String empContactNo) {
 		this.empContactNo = empContactNo;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", empName=" + empName + ", empMail=" + empMail + ", empAddr=" + empAddr
 				+ ", empDept=" + empDept + ", empContactNo=" + empContactNo + "]";
 	}
-
-
-	
-
-	
-	
-	
 
 }

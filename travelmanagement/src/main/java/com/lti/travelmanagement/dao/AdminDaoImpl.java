@@ -28,7 +28,7 @@ public class AdminDaoImpl implements AdminDao {
 
 
 	@Override
-	public boolean deleteEmployee(int adminid, int empid) {
+	public boolean deleteEmployee( int empid) {
 		Employee e=em.find(Employee.class, empid);
 		if(e==null)
 			return false;
@@ -45,6 +45,21 @@ public class AdminDaoImpl implements AdminDao {
 	
 		return e;
 //		return null;
+	}
+
+
+	@Override
+	@Transactional
+	public Employee updateEmployee(int empId,Employee e) {
+		Employee updateEmp=em.find(Employee.class, empId);
+		updateEmp.setEmpName(e.getEmpName());
+		updateEmp.setEmpAddr(e.getEmpAddr());
+		updateEmp.setEmpMail(e.getEmpMail());
+		updateEmp.setEmpContactNo(e.getEmpContactNo());
+		updateEmp.setEmpDept(e.getEmpDept());
+
+		e=em.merge(updateEmp);
+		return e;
 	}
 
 	
