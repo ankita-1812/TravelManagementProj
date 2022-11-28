@@ -1,7 +1,5 @@
 package com.lti.travelmanagement.beans;
 
-
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,97 +9,108 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name="AdminTable")
+@Table(name = "ADMIN")
 public class Admin {
-    
-    @Id
-    @Column(name="AdminId", length=10)
-    private int admin_id;
-    
-    @Column(name="AdminUsername", length=30)
-    private String admin_username;
-    
-    @Column(name="AdminName", length=30)
-    private String admin_name;
-    
-    @Column(name="Admin", length=40)
-    private String admin_emailId;
-    
-  
-   
-   public Admin() {
-	   
-   }
-   public Admin(int admin_id, String admin_username, String admin_name, String admin_emailId) {
-        super();
-        this.admin_id = admin_id;
-        this.admin_username = admin_username;
-        this.admin_name = admin_name;
-        this.admin_emailId = admin_emailId;
-    }
 
+	@Id
+	@Column(name = "AdminId", length = 10)
+	private int adminId;
 
+	@Column(name = "AdminName", length = 30)
+	private String adminName;
 
-   public int getAdmin_id() {
-        return admin_id;
-    }
+	@Column(name = "AdminMail", length = 40)
+	private String adminMail;
 
+	@Column(name = "AdminAddr", length = 50)
+	private String adminAddr;
 
+	@Column(name = "AdminContact", length = 10)
+	private String adminContactNo;
 
-   public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
-    }
+	@OneToOne(cascade = CascadeType.ALL)
+	private Login login;
 
+	public Admin() {
 
+	}
 
-   public String getAdmin_username() {
-        return admin_username;
-    }
+	public Admin(int adminId, String adminName, String adminMail, String adminAddr, String adminContactNo) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminMail = adminMail;
+		this.adminAddr = adminAddr;
+		this.adminContactNo = adminContactNo;
+	}
 
+	public Admin(int adminId, String adminName, String adminMail, String adminAddr, String adminContactNo,
+			Login login) {
+		super();
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminMail = adminMail;
+		this.adminAddr = adminAddr;
+		this.adminContactNo = adminContactNo;
+		this.login = login;
+	}
 
+	public int getAdminId() {
+		return adminId;
+	}
 
-   public void setAdmin_username(String admin_username) {
-        this.admin_username = admin_username;
-    }
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
 
+	public String getAdminName() {
+		return adminName;
+	}
 
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
 
-   public String getAdmin_name() {
-        return admin_name;
-    }
+	public String getAdminMail() {
+		return adminMail;
+	}
 
+	public void setAdminMail(String adminMail) {
+		this.adminMail = adminMail;
+	}
 
+	public String getAdminAddr() {
+		return adminAddr;
+	}
 
-   public void setAdmin_name(String admin_name) {
-        this.admin_name = admin_name;
-    }
+	public void setAdminAddr(String adminAddr) {
+		this.adminAddr = adminAddr;
+	}
 
+	public String getAdminContactNo() {
+		return adminContactNo;
+	}
 
+	public void setAdminContactNo(String adminContactNo) {
+		this.adminContactNo = adminContactNo;
+	}
 
-   public String getAdmin_emailId() {
-        return admin_emailId;
-    }
+	public Login getLogin() {
+		return login;
+	}
 
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminMail=" + adminMail + ", adminAddr="
+				+ adminAddr + ", adminContactNo=" + adminContactNo + ", login=" + login + "]";
+	}
 
-   public void setAdmin_emailId(String admin_emailId) {
-        this.admin_emailId = admin_emailId;
-    }
-
-
-
-   @Override
-    public String toString() {
-        return "Admin [admin_id=" + admin_id + ", admin_username=" + admin_username + ", admin_name=" + admin_name
-                + ", admin_emailId=" + admin_emailId + "]";
-    }
-    
-    
-    
-    
 }

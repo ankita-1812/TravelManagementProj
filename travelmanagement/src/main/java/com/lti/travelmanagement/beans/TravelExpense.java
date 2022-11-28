@@ -4,60 +4,110 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="travel_expense")
+@Table(name = "TRAVELEXPENSECLAIMS")
 public class TravelExpense {
 
-	
 	@Id
-	private int travel_expense_id;
+	private int travelExpenseId;
+	private String travelExpenseDate;
+	private String travelExpenseStatus;
+
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="tr_fk")
-	private TravelRequest travelrequest;
-	private String travel_expense_date;
-	private String travel_expense_status;
-	public TravelExpense(int travel_expense_id, TravelRequest travelrequest, String travel_expense_date,
-			String travel_expense_status) {
+	@JoinColumn(name = "TravelRequestId")
+	private TravelRequest travelRequest;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "empId")
+	private Employee employee;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "adminId")
+	private Admin admin;
+	
+	public TravelExpense() {
+		
+	}
+
+	public TravelExpense(int travelExpenseId, String travelExpenseDate, String travelExpenseStatus) {
 		super();
-		this.travel_expense_id = travel_expense_id;
-		this.travelrequest = travelrequest;
-		this.travel_expense_date = travel_expense_date;
-		this.travel_expense_status = travel_expense_status;
+		this.travelExpenseId = travelExpenseId;
+		this.travelExpenseDate = travelExpenseDate;
+		this.travelExpenseStatus = travelExpenseStatus;
 	}
-	public int getTravel_expense_id() {
-		return travel_expense_id;
+
+	
+	
+
+	public TravelExpense(int travelExpenseId, String travelExpenseDate, String travelExpenseStatus,
+			TravelRequest travelRequest, Employee employee, Admin admin) {
+		super();
+		this.travelExpenseId = travelExpenseId;
+		this.travelExpenseDate = travelExpenseDate;
+		this.travelExpenseStatus = travelExpenseStatus;
+		this.travelRequest = travelRequest;
+		this.employee = employee;
+		this.admin = admin;
 	}
-	public void setTravel_expense_id(int travel_expense_id) {
-		this.travel_expense_id = travel_expense_id;
+
+	public int getTravelExpenseId() {
+		return travelExpenseId;
 	}
-	public TravelRequest getTravelrequest() {
-		return travelrequest;
+
+	public void setTravelExpenseId(int travelExpenseId) {
+		this.travelExpenseId = travelExpenseId;
 	}
-	public void setTravelrequest(TravelRequest travelrequest) {
-		this.travelrequest = travelrequest;
+
+	public String getTravelExpenseDate() {
+		return travelExpenseDate;
 	}
-	public String getTravel_expense_date() {
-		return travel_expense_date;
+
+	public void setTravelExpenseDate(String travelExpenseDate) {
+		this.travelExpenseDate = travelExpenseDate;
 	}
-	public void setTravel_expense_date(String travel_expense_date) {
-		this.travel_expense_date = travel_expense_date;
+
+	public String getTravelExpenseStatus() {
+		return travelExpenseStatus;
 	}
-	public String getTravel_expense_status() {
-		return travel_expense_status;
+
+	public void setTravelExpenseStatus(String travelExpenseStatus) {
+		this.travelExpenseStatus = travelExpenseStatus;
 	}
-	public void setTravel_expense_status(String travel_expense_status) {
-		this.travel_expense_status = travel_expense_status;
+
+	public TravelRequest getTravelRequest() {
+		return travelRequest;
 	}
+
+	public void setTravelRequest(TravelRequest travelRequest) {
+		this.travelRequest = travelRequest;
+	}
+
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
-		return "TravelExpense [travel_expense_id=" + travel_expense_id + ", travelrequest=" + travelrequest
-				+ ", travel_expense_date=" + travel_expense_date + ", travel_expense_status=" + travel_expense_status
-				+ "]";
+		return "TravelExpense [travelExpenseId=" + travelExpenseId + ", travelExpenseDate=" + travelExpenseDate
+				+ ", travelExpenseStatus=" + travelExpenseStatus + ", travelRequest=" + travelRequest + "]";
 	}
-	
 	
 	
 
