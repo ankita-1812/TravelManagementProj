@@ -21,7 +21,6 @@ public class LoginController {
 	public boolean updatePassword(@PathVariable("username") String userName,@RequestBody Login login) {
 		return loginService.updatePassword(userName,login);
 	}
-	
-//	 update password
+
 	
 }
