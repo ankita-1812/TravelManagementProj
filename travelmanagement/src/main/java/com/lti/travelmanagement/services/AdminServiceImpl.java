@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.dao.AdminDao;
 
-@Service("adminservice")
+@Service("adminService")
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired

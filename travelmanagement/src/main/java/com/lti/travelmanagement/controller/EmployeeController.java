@@ -25,7 +25,7 @@ import com.lti.travelmanagement.services.EmployeeService;
 @RequestMapping("/employee")
 public class EmployeeController {
 	@Autowired
-	EmployeeService empservice;
+	EmployeeService empService;
 	
 	@GetMapping(path="/hello")
 	public String hello() {
@@ -38,43 +38,43 @@ public class EmployeeController {
 //	}
 	@PostMapping("/addemprequest/{empid}")
 	public Employee addEmployeeRequest(@PathVariable("empid") int empId,@RequestBody TravelRequest t) {
-		return empservice.addEmployeeRequest(empId,t);
+		return empService.addEmployeeRequest(empId,t);
 	}
 	
 	@PutMapping("/updateemprequest/{reqid}")
 	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqId,@RequestBody TravelRequest t) {
-		return empservice.updateEmployeeRequest(reqId,t);
+		return empService.updateEmployeeRequest(reqId,t);
 	}
 	
 	@GetMapping("/getalltravelrequest/{empid}")
 	public Set<TravelRequest> findAllTravelRequests(@PathVariable("empid")int empId){
-		return empservice.findAllTravelRequests(empId);
+		return empService.findAllTravelRequests(empId);
 	}
 	@DeleteMapping("deleteemprequest/{reqid}")
 	public boolean DeleteRequest(@PathVariable("reqid") int reqId) {
-		return empservice.deleteTravelRequest(reqId);
+		return empService.deleteTravelRequest(reqId);
 	}
 	
 	@PostMapping("/addempexpense/{empid}/{reqid}")
 	public boolean addEmployeeExpense(@PathVariable("empid")int empId,@PathVariable("reqid") int reqId,@RequestBody TravelExpense travelExpense) {
-		return empservice.addEmployeeExpense(empId,reqId,travelExpense);
+		return empService.addEmployeeExpense(empId,reqId,travelExpense);
 	}
 	
 	@PutMapping("/updateempexpense/{expenseid}")
 	public boolean updatEmployeeExpense(@PathVariable("expenseid") int travelExpenseId,@RequestBody TravelExpense travelExpense) {
-		return empservice.updateEmployeeExpense(travelExpenseId,travelExpense);
+		return empService.updateEmployeeExpense(travelExpenseId,travelExpense);
 
 	}
 	
 	@DeleteMapping("/deleteempexpense/{expenseid}")
 	public boolean deleteEmployeeExpense(@PathVariable("expenseid") int expenseId) {
-		return empservice.deleteEmployeeExpense(expenseId);
+		return empService.deleteEmployeeExpense(expenseId);
 	}
 	
 	
 	@GetMapping("/getalltravelexpense/{empid}/{reqid}")
 	public Set<TravelExpense> findAllTravelExpense(@PathVariable("empid") int empId,@PathVariable("reqid") int reqId){
-		return empservice.findAllTravelExpense(empId,reqId);
+		return empService.findAllTravelExpense(empId,reqId);
 	}
 	
 }

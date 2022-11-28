@@ -15,7 +15,7 @@ import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 
-@Repository("admindao")
+@Repository("adminDao")
 public class AdminDaoImpl implements AdminDao {
 
 	@PersistenceContext

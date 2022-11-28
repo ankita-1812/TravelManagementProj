@@ -21,38 +21,38 @@ import com.lti.travelmanagement.services.AdminService;
 public class AdminController {
 	
 	@Autowired
-	AdminService adminservice;
+	AdminService adminService;
 	@PostMapping("/addemp")
 	public Employee AddEmployee(@RequestBody Employee e ) {
-		return  adminservice.AddEmployee(e);
+		return  adminService.AddEmployee(e);
 		
 	}
 	@DeleteMapping("/deleteemp/{empid}")
 	public boolean deleteEmployee(@PathVariable("empid") int empId) {
-		return adminservice.deleteEmployee(empId);
+		return adminService.deleteEmployee(empId);
 	}
 	
 	@GetMapping("/findallemp")
 	public List<Employee> findAllEmployees(){
-		return adminservice.findAllEmployees();
+		return adminService.findAllEmployees();
 	}
 	
 	@PutMapping("/updateemp/{empid}")
 	public Employee updateEmployee(@PathVariable("empid") int empId,@RequestBody Employee e) {
 		
-		return adminservice.updateEmployee(empId,e);
+		return adminService.updateEmployee(empId,e);
 	}
 	
 	//updatetravelrequeststatus
 	@PutMapping("/updaterequeststatus/{adminid}/{reqid}/{adminstatus}")
 	public boolean updateRequestStatus(@PathVariable("adminid")int adminId,@PathVariable("reqid") int reqId,@PathVariable("adminstatus") String adminStatus) {
-		return adminservice.updateRequestStatus(adminId,reqId,adminStatus);
+		return adminService.updateRequestStatus(adminId,reqId,adminStatus);
 	}
 	
 	//updatetravelexpensestatus
 	@PutMapping("/updaterequestexpensestatus/{adminid}/{responseid}/{adminstatus}")
 	public boolean updateRequestExpenseStatus(@PathVariable("adminid") int adminId,@PathVariable("responseid") int responseId,@PathVariable("adminstatus") String adminStatus) {
-		return adminservice.updateRequestExpenseStatus(adminId,responseId,adminStatus);
+		return adminService.updateRequestExpenseStatus(adminId,responseId,adminStatus);
 	}
 	
 }
