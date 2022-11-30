@@ -20,7 +20,7 @@ import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.services.EmployeeService;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -78,3 +78,4 @@ public class EmployeeController {
 	}
 	
 }
+	

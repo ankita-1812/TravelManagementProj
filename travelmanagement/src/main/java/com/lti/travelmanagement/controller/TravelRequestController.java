@@ -3,6 +3,7 @@ package com.lti.travelmanagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.services.TravelExpenseService;
 import com.lti.travelmanagement.services.TravelRequestService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/travelrequest")
 public class TravelRequestController {

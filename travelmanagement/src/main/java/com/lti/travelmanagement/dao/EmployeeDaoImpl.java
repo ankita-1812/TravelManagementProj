@@ -114,7 +114,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		if(travelExpenseUpdate==null)
 			return false;
 		travelExpenseUpdate.setTravelExpenseDate(travelExpense.getTravelExpenseDate());
-		travelExpenseUpdate.setTravelExpenseStatus(travelExpense.getTravelExpenseDate());
+		travelExpenseUpdate.setTravelExpenseStatus(travelExpense.getTravelExpenseStatus());
+		travelExpenseUpdate.setTravelDetails(travelExpense.getTravelDetails());
+		travelExpenseUpdate.setTravelCostExpense(travelExpense.getTravelCostExpense());
 		em.merge(travelExpenseUpdate);
 		
 		return true;

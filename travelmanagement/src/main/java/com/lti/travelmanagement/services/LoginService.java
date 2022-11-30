@@ -10,4 +10,6 @@ public interface LoginService {
 
 	boolean updatePassword(String userName, Login login);
 
+	Employee checkEmployeeExist(String userName, String password, String userType);
+
 }

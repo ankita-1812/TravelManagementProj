@@ -32,8 +32,6 @@ public class TravelRequestDaoImpl implements TravelRequestDao{
 	public List<TravelRequest> findByDate(String date) {
 		Query q= em.createQuery("select te from TravelRequest as te where te.travelRequestDate=:date");
 		q.setParameter("date", date);
-	
-		
 		List<TravelRequest> trList= (List<TravelRequest>) q.getResultList();
 		 	
 		return trList;

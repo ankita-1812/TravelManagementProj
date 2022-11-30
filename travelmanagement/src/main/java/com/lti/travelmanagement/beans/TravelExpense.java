@@ -16,6 +16,9 @@ public class TravelExpense {
 	private int travelExpenseId;
 	private String travelExpenseDate;
 	private String travelExpenseStatus;
+	private String travelDetails;
+	private Double travelCostExpense;
+
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "TravelRequestId")
@@ -98,11 +101,32 @@ public class TravelExpense {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+	
+
+	public String getTravelDetails() {
+		return travelDetails;
+	}
+
+	public void setTravelDetails(String travelDetails) {
+		this.travelDetails = travelDetails;
+	}
+
+	public Double getTravelCostExpense() {
+		return travelCostExpense;
+	}
+
+	public void setTravelCostExpense(Double travelCostExpense) {
+		this.travelCostExpense = travelCostExpense;
+	}
 
 	@Override
 	public String toString() {
 		return "TravelExpense [travelExpenseId=" + travelExpenseId + ", travelExpenseDate=" + travelExpenseDate
-				+ ", travelExpenseStatus=" + travelExpenseStatus + ", travelRequest=" + travelRequest + "]";
+				+ ", travelDetails=" + travelDetails + ", travelCostExpense=" + travelCostExpense
+				+ ", travelExpenseStatus=" + travelExpenseStatus + ", travelRequest=" + travelRequest + ", employee="
+				+ employee + ", admin=" + admin + "]";
 	}
+
+	
 
 }
