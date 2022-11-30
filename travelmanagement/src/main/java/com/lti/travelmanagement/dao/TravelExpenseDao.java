@@ -10,4 +10,8 @@ public interface TravelExpenseDao {
 
 	List<TravelExpense> findByDate(String date);
 
+	TravelExpense findExpById(int expId);
+
+	List<TravelExpense> findAllReq();
+
 }

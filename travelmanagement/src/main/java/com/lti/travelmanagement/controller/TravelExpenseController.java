@@ -32,4 +32,14 @@ public class TravelExpenseController {
 		return travelExpenseService.findByDate(date);
 	}
 	
+	@GetMapping("findexpbyid/{expid}")
+	public TravelExpense findExpById(@PathVariable("expid") int expId) {
+		return travelExpenseService.findExpById(expId);
+	}
+	
+	@GetMapping("findallreq")
+	public List<TravelExpense> findAllReq(){
+		return travelExpenseService.findAllReq();
+	}
+	
 }

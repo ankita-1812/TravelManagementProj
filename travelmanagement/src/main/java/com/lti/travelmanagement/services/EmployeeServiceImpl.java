@@ -73,6 +73,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.findAllTravelRequests(empId,reqId);
 	}
 
+	@Override
+	public Employee findEmployeeById(int empId) {
+		
+		return employeeDao.findEmployeeById(empId);
+	}
+
 	
 
 	

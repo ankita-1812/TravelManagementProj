@@ -25,4 +25,16 @@ public class TravelRequestServiceImpl implements TravelRequestService {
 		return travelRequestDao.findByDate(date);
 	}
 
+	@Override
+	public TravelRequest getReqById(int reqId) {
+		
+		return travelRequestDao.getReqById(reqId);
+	}
+
+	@Override
+	public List<TravelRequest> findAllRes() {
+	
+		return travelRequestDao.findAllRes();
+	}
+
 }

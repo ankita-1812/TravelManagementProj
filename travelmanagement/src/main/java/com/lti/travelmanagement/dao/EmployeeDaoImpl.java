@@ -44,6 +44,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public Employee addEmployeeRequest(int empId, TravelRequest t) {
 		Employee e=em.find(Employee.class, empId);
 		t.setEmployee(e);
+		
 		em.persist(t);
 	
 		
@@ -145,6 +146,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Set<TravelExpense> trset = new HashSet<TravelExpense>(trList);  	
 		return trset;
 		
+	}
+
+	public Employee findEmployeeById(int empId) {
+		Employee e=em.find(Employee.class,empId);
+		return e;
 	}
 
 	}

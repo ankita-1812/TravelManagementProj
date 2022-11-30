@@ -40,4 +40,17 @@ public class TravelExpenseDaoImpl implements TravelExpenseDao{
 		return trList;
 	}
 
+	@Override
+	public TravelExpense findExpById(int expId) {
+		TravelExpense te=em.find(TravelExpense.class, expId);
+		return te;
+	}
+
+	@Override
+	public List<TravelExpense> findAllReq() {
+		Query q=em.createQuery("select te from TravelExpense as te");
+		List<TravelExpense> trlist=(List<TravelExpense>)q.getResultList();
+		return trlist;
+	}
+
 }

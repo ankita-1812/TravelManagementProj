@@ -18,4 +18,5 @@ public interface EmployeeService {
 	boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense);
 	boolean deleteEmployeeExpense(int expenseId);
 	Set<TravelExpense> findAllTravelExpense(int empId, int reqId);
+	Employee findEmployeeById(int empId);
 }

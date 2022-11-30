@@ -35,4 +35,14 @@ public class TravelRequestController {
 		return travelRequestService.findByDate(date);
 	}
 	
+	@GetMapping("/getreqbyid/{reqid}")
+	public TravelRequest getReqById(@PathVariable("reqid") int reqId) {
+		return travelRequestService.getReqById(reqId);
+	}
+	
+	@GetMapping("findallreq")
+	public List<TravelRequest> findAllRes(){
+		return travelRequestService.findAllRes();
+	}
+	
 }

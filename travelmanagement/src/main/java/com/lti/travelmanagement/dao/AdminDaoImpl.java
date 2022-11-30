@@ -35,6 +35,7 @@ public class AdminDaoImpl implements AdminDao {
 
 
 	@Override
+	@Transactional
 	public boolean deleteEmployee( int empid) {
 		Employee e=em.find(Employee.class, empid);
 		if(e==null)

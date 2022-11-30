@@ -37,4 +37,17 @@ public class TravelRequestDaoImpl implements TravelRequestDao{
 		return trList;
 	}
 
+	@Override
+	public TravelRequest getReqById(int reqId) {
+		TravelRequest t=em.find(TravelRequest.class, reqId);
+		return t;
+	}
+
+	@Override
+	public List<TravelRequest> findAllRes() {
+		Query q=em.createQuery("select te from TravelRequest as te");
+		List<TravelRequest> trList=(List<TravelRequest>) q.getResultList();
+		return trList;
+	}
+
 }

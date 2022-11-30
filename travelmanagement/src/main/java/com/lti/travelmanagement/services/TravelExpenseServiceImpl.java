@@ -22,5 +22,15 @@ public class TravelExpenseServiceImpl implements TravelExpenseService {
 		
 		return travelExpenseDao.findByDate(date);
 	}
+	@Override
+	public TravelExpense findExpById(int expId) {
+		
+		return travelExpenseDao.findExpById(expId);
+	}
+	@Override
+	public List<TravelExpense> findAllReq() {
+		
+		return travelExpenseDao.findAllReq();
+	}
 	
 }

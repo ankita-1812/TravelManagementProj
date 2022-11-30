@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.travelmanagement.beans.Admin;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.services.LoginService;
@@ -28,6 +29,11 @@ public class LoginController {
 	@GetMapping("checkidentity/employee/{username}/{password}/{userType}")
 	public Employee checkEmployeeExist(@PathVariable("username") String userName,@PathVariable("password") String password,@PathVariable("userType") String userType) {
 		return loginService.checkEmployeeExist(userName,password,userType);
+		
+	}
+	@GetMapping("checkidentity/admin/{username}/{password}/{userType}")
+	public Admin checkAdminExist(@PathVariable("username") String userName,@PathVariable("password") String password,@PathVariable("userType") String userType) {
+		return loginService.checkAdminExist(userName,password,userType);
 		
 	}
 }

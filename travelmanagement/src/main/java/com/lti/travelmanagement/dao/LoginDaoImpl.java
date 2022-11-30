@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.travelmanagement.beans.Admin;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.beans.TravelRequest;
@@ -39,6 +40,17 @@ public class LoginDaoImpl implements LoginDao{
 		
 		Employee e =(Employee) q.getSingleResult();
 		return e;
+	}
+	@Override
+	public Admin checkAdminExist(String userName, String password, String userType) {
+		Query q= em.createQuery("select a from Admin as a where a.login.userName=:userName and a.login.password=:password and a.login.userType=:userType");
+		q.setParameter("userName", userName);
+		q.setParameter("password", password);
+		q.setParameter("userType",userType);
+		
+		Admin a =(Admin) q.getSingleResult();
+		return a;
+		
 	}
 
 }

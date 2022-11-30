@@ -10,4 +10,8 @@ public interface TravelRequestDao {
 
 	List<TravelRequest> findByDate(String date);
 
+	TravelRequest getReqById(int reqId);
+
+	List<TravelRequest> findAllRes();
+
 }
