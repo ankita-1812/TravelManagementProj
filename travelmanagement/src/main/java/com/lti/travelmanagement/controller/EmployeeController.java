@@ -40,10 +40,20 @@ public class EmployeeController {
 	public Employee findEmployeeById(@PathVariable("empid" )int empId) {
 		return  empService.findEmployeeById(empId);
 	}
+	
+	@PutMapping("/updateemp/{empid}")
+	public Employee updateEmployee(@PathVariable("empid") int empId,@RequestBody Employee e) {
+		
+		return empService.updateEmployee(empId,e);
+	}
+
+	
 	@PostMapping("/addemprequest/{empid}")
 	public Employee addEmployeeRequest(@PathVariable("empid") int empId,@RequestBody TravelRequest t) {
 		return empService.addEmployeeRequest(empId,t);
 	}
+	
+	
 	
 	@PutMapping("/updateemprequest/{reqid}")
 	public Employee updateEmployeeRequest(@PathVariable("reqid") int reqId,@RequestBody TravelRequest t) {

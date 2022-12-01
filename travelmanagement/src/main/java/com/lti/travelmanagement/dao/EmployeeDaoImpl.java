@@ -171,4 +171,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return e;
 	}
 
+	@Transactional
+	public Employee updateEmployee(int empId, Employee e) {
+		Employee empUpdate=em.find(Employee.class, empId);
+		empUpdate.setEmpName(e.getEmpName());
+		empUpdate.setEmpAddr(e.getEmpAddr());
+		empUpdate.setEmpDept(e.getEmpDept());
+		empUpdate.setEmpContactNo(e.getEmpContactNo());
+		empUpdate.setEmpMail(e.getEmpMail());
+		em.merge(empUpdate);
+		
+		return empUpdate;
+	}
+
 	}
