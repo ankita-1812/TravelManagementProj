@@ -5,7 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TRAVELREQUESTS")
 public class TravelRequest {
+	
 	@Id
+	@SequenceGenerator(name = "seq_req_gen", sequenceName = "seq_req", allocationSize = 1)
+	@GeneratedValue(generator = "seq_req")
 	@Column(name = "TravelRequestId", length = 10)
 	private int travelRequestId;
 

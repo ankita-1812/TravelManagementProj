@@ -27,10 +27,18 @@ public class AdminDaoImpl implements AdminDao {
 	public Employee AddEmployee(Employee e) {
 		String userName=e.getEmpId()+"_"+e.getEmpName();
 		Login l=new Login(userName,"Pass@123","employee");
+		
 		em.persist(l);
-		e.setLogin(l);
-		em.persist(e);
-		return e;
+		
+		Employee newE=new Employee();
+		newE.setEmpName(e.getEmpName());
+		newE.setEmpAddr(e.getEmpAddr());
+		newE.setEmpContactNo(e.getEmpContactNo());
+		newE.setEmpMail(e.getEmpMail());
+		newE.setEmpDept(e.getEmpDept());
+		newE.setLogin(l);
+		em.persist(newE);
+		return newE;
 	}
 
 

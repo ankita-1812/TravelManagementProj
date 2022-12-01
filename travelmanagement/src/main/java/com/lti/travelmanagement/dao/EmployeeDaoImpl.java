@@ -43,9 +43,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Transactional
 	public Employee addEmployeeRequest(int empId, TravelRequest t) {
 		Employee e=em.find(Employee.class, empId);
-		t.setEmployee(e);
+		TravelRequest newtr=new TravelRequest();
+		newtr.setTravelRequestDate(t.getTravelRequestDate());
+		newtr.setTravelRequestStatus("pending");
+		newtr.setTravelRequestStartDate(t.getTravelRequestStartDate());
+		newtr.setTravelRequestEndDate(t.getTravelRequestEndDate());;
+		newtr.setTravelRequestReason(t.getTravelRequestReason());;
+		newtr.setDestinationFrom(t.getDestinationFrom());
+		newtr.setDestinationTo(t.getDestinationTo());
+		newtr.setEstimatedExpense(t.getEstimatedExpense());
+		newtr.setModeOfTravel(t.getModeOfTravel());
+		newtr.setEmployee(e);
 		
-		em.persist(t);
+		em.persist(newtr);
 	
 		
 		
@@ -57,7 +67,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		TravelRequest e=em.find(TravelRequest.class, reqId);
 		e.setTravelRequestDate(t.getTravelRequestDate());
-		e.setTravelRequestStatus(t.getTravelRequestStatus());
+		
 		e.setTravelRequestStartDate(t.getTravelRequestStartDate());
 		e.setTravelRequestEndDate(t.getTravelRequestEndDate());;
 		e.setTravelRequestReason(t.getTravelRequestReason());;
@@ -100,12 +110,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Transactional
 	public boolean addEmployeeExpense(int empId, int reqId,TravelExpense travelExpense) {
 		Employee e=em.find(Employee.class, empId);
-		travelExpense.setEmployee(e);
+	
 		TravelRequest t=em.find(TravelRequest.class, reqId);
-		travelExpense.setTravelRequest(t);
+		
 		if(e==null || t==null)
 			return false;
-		em.persist(travelExpense);
+		TravelExpense travelExpenseNew=new TravelExpense();
+		travelExpenseNew.setTravelExpenseDate(travelExpense.getTravelExpenseDate());
+		travelExpenseNew.setTravelExpenseStatus("pending");
+		travelExpenseNew.setTravelDetails(travelExpense.getTravelDetails());
+		travelExpenseNew.setTravelCostExpense(travelExpense.getTravelCostExpense());
+		travelExpenseNew.setEmployee(e);
+		travelExpenseNew.setTravelRequest(t);
+		
+		em.persist(travelExpenseNew);
 		return true;
 	}
 
@@ -115,7 +133,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		if(travelExpenseUpdate==null)
 			return false;
 		travelExpenseUpdate.setTravelExpenseDate(travelExpense.getTravelExpenseDate());
-		travelExpenseUpdate.setTravelExpenseStatus(travelExpense.getTravelExpenseStatus());
+		
 		travelExpenseUpdate.setTravelDetails(travelExpense.getTravelDetails());
 		travelExpenseUpdate.setTravelCostExpense(travelExpense.getTravelCostExpense());
 		em.merge(travelExpenseUpdate);

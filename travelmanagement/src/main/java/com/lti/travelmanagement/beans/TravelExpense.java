@@ -2,10 +2,12 @@ package com.lti.travelmanagement.beans;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 public class TravelExpense {
 
 	@Id
+	@SequenceGenerator(name = "seq_res_gen", sequenceName = "seq_res", allocationSize = 1)
+	@GeneratedValue(generator = "seq_res")
 	private int travelExpenseId;
 	private String travelExpenseDate;
 	private String travelExpenseStatus;

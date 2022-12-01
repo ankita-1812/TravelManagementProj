@@ -6,10 +6,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +19,8 @@ import javax.persistence.Table;
 public class Admin {
 
 	@Id
+	@SequenceGenerator(name = "seq_admin_gen", sequenceName = "seq_admin", allocationSize = 1)
+	@GeneratedValue(generator = "seq_admin")
 	@Column(name = "AdminId", length = 10)
 	private int adminId;
 
