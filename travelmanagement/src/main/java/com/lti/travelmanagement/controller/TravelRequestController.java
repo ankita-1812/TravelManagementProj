@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.RequestNotFoundException;
 import com.lti.travelmanagement.services.TravelExpenseService;
 import com.lti.travelmanagement.services.TravelRequestService;
 
@@ -37,7 +38,13 @@ public class TravelRequestController {
 	
 	@GetMapping("/getreqbyid/{reqid}")
 	public TravelRequest getReqById(@PathVariable("reqid") int reqId) {
+		try {
 		return travelRequestService.getReqById(reqId);
+		}
+		catch(RequestNotFoundException requestNotFound) {
+			requestNotFound.printStackTrace();
+		}
+		return null;
 	}
 	
 	@GetMapping("findallreq")

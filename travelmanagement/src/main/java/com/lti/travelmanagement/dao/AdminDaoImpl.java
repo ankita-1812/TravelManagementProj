@@ -14,6 +14,7 @@ import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.AdminNotFoundException;
 
 @Repository("adminDao")
 public class AdminDaoImpl implements AdminDao {
@@ -81,9 +82,12 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	@Transactional
-	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) {
+	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) throws AdminNotFoundException {
 		TravelRequest t=em.find(TravelRequest.class, reqId);
 		Admin admin=em.find(Admin.class, adminId);
+		if(admin==null) {
+			throw new AdminNotFoundException();
+		}
 		if(admin==null || t==null)
 			return false;
 

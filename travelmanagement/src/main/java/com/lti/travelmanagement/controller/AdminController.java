@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.travelmanagement.beans.Employee;
+import com.lti.travelmanagement.exceptions.AdminNotFoundException;
 import com.lti.travelmanagement.services.AdminService;
 
 @CrossOrigin("*")
@@ -47,7 +48,13 @@ public class AdminController {
 	//updatetravelrequeststatus
 	@GetMapping("/updaterequeststatus/{adminid}/{reqid}/{adminstatus}")
 	public boolean updateRequestStatus(@PathVariable("adminid")int adminId,@PathVariable("reqid") int reqId,@PathVariable("adminstatus") String adminStatus) {
+		try{
 		return adminService.updateRequestStatus(adminId,reqId,adminStatus);
+		}
+		catch(AdminNotFoundException ae) {
+			ae.printStackTrace();
+			}
+		return false;
 	}
 	
 	//updatetravelexpensestatus

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.RequestNotFoundException;
 
 @Repository("travelRequestDao")
 public class TravelRequestDaoImpl implements TravelRequestDao{
@@ -38,8 +39,11 @@ public class TravelRequestDaoImpl implements TravelRequestDao{
 	}
 
 	@Override
-	public TravelRequest getReqById(int reqId) {
+	public TravelRequest getReqById(int reqId) throws RequestNotFoundException {
 		TravelRequest t=em.find(TravelRequest.class, reqId);
+		if(t==null) {
+			throw new RequestNotFoundException();
+		}
 		return t;
 	}
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.EmployeeNotFoundException;
 import com.lti.travelmanagement.services.EmployeeService;
 
 @CrossOrigin("*")
@@ -38,7 +39,14 @@ public class EmployeeController {
 //	}
 	@GetMapping("findempbyid/{empid}")
 	public Employee findEmployeeById(@PathVariable("empid" )int empId) {
+		try {
 		return  empService.findEmployeeById(empId);
+		}
+		catch(EmployeeNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 	
 	@PutMapping("/updateemp/{empid}")

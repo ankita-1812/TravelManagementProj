@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.travelmanagement.beans.Admin;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
+import com.lti.travelmanagement.exceptions.EmployeeNotFoundException;
+import com.lti.travelmanagement.exceptions.InvalidUserException;
 import com.lti.travelmanagement.services.LoginService;
 @CrossOrigin("*")
 @RestController
@@ -28,12 +30,23 @@ public class LoginController {
 
 	@GetMapping("checkidentity/employee/{username}/{password}/{userType}")
 	public Employee checkEmployeeExist(@PathVariable("username") String userName,@PathVariable("password") String password,@PathVariable("userType") String userType) {
+	try {
 		return loginService.checkEmployeeExist(userName,password,userType);
-		
+	}
+	catch(InvalidUserException invalidException ) {
+		invalidException.printStackTrace();
+	}
+	return null;
 	}
 	@GetMapping("checkidentity/admin/{username}/{password}/{userType}")
 	public Admin checkAdminExist(@PathVariable("username") String userName,@PathVariable("password") String password,@PathVariable("userType") String userType) {
+		try {
 		return loginService.checkAdminExist(userName,password,userType);
+		}
+		catch(InvalidUserException invalidException ) {
+			invalidException.printStackTrace();
+		}
+		return null;
 		
 	}
 }

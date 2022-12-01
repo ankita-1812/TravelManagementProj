@@ -10,6 +10,7 @@ import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.dao.EmployeeDaoImpl;
+import com.lti.travelmanagement.exceptions.EmployeeNotFoundException;
 
 @Service("empService")
 public class EmployeeServiceImpl implements EmployeeService {
@@ -74,7 +75,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee findEmployeeById(int empId) {
+	public Employee findEmployeeById(int empId) throws EmployeeNotFoundException {
 		
 		return employeeDao.findEmployeeById(empId);
 	}

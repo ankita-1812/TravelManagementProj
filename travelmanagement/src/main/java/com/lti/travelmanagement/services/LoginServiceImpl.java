@@ -7,6 +7,7 @@ import com.lti.travelmanagement.beans.Admin;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.dao.LoginDao;
+import com.lti.travelmanagement.exceptions.InvalidUserException;
 
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
@@ -21,13 +22,13 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public Employee checkEmployeeExist(String userName, String password, String userType) {
+	public Employee checkEmployeeExist(String userName, String password, String userType)  throws InvalidUserException  {
 		return loginDao.checkEmployeeExist(userName,password,userType);
 		
 	}
 
 	@Override
-	public Admin checkAdminExist(String userName, String password, String userType) {
+	public Admin checkAdminExist(String userName, String password, String userType)throws InvalidUserException  {
 		
 		return loginDao.checkAdminExist(userName,password,userType);
 	}

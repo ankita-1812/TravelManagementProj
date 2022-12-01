@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.travelmanagement.beans.TravelRequest;
 import com.lti.travelmanagement.dao.TravelRequestDao;
+import com.lti.travelmanagement.exceptions.RequestNotFoundException;
 
 @Service("travelRequestService")
 public class TravelRequestServiceImpl implements TravelRequestService {
@@ -26,7 +27,7 @@ public class TravelRequestServiceImpl implements TravelRequestService {
 	}
 
 	@Override
-	public TravelRequest getReqById(int reqId) {
+	public TravelRequest getReqById(int reqId) throws RequestNotFoundException {
 		
 		return travelRequestDao.getReqById(reqId);
 	}

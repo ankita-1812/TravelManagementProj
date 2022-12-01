@@ -16,6 +16,7 @@ import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.Login;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.EmployeeNotFoundException;
 
 @Repository("employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -166,8 +167,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 
-	public Employee findEmployeeById(int empId) {
+	public Employee findEmployeeById(int empId) throws EmployeeNotFoundException {
 		Employee e=em.find(Employee.class,empId);
+		
+		if(e==null) {
+			throw new EmployeeNotFoundException();
+		}
 		return e;
 	}
 

@@ -6,6 +6,7 @@ import java.util.Set;
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.beans.TravelExpense;
 import com.lti.travelmanagement.beans.TravelRequest;
+import com.lti.travelmanagement.exceptions.EmployeeNotFoundException;
 
 
 public interface EmployeeService {
@@ -18,6 +19,6 @@ public interface EmployeeService {
 	boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense);
 	boolean deleteEmployeeExpense(int expenseId);
 	Set<TravelExpense> findAllTravelExpense(int empId, int reqId);
-	Employee findEmployeeById(int empId);
+	Employee findEmployeeById(int empId) throws EmployeeNotFoundException;
 	Employee updateEmployee(int empId, Employee e);
 }

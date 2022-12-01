@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.travelmanagement.beans.Employee;
 import com.lti.travelmanagement.dao.AdminDao;
+import com.lti.travelmanagement.exceptions.AdminNotFoundException;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -35,7 +36,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateEmployee(empId,e);
 	}
 	@Override
-	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) {
+	public boolean updateRequestStatus(int adminId, int reqId, String adminStatus) throws AdminNotFoundException{
 		
 		return adminDao.updateRequestStatus(adminId,reqId,adminStatus);
 	}
