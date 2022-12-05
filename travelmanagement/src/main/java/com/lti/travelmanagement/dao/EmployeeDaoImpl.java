@@ -31,7 +31,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	@Transactional
 	public Employee addEmployee(Employee e) {
-		String userName=e.getEmpId()+e.getEmpName();
+		String userName=e.getEmpId()+"_"+e.getEmpName();
 		Login l=new Login(userName,"Pass@123","employee");
 		em.persist(l);
 		e.setLogin(l);
@@ -128,6 +128,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return true;
 	}
 
+	
 	@Transactional
 	public boolean updateEmployeeExpense(int travelExpenseId, TravelExpense travelExpense) {
 		TravelExpense travelExpenseUpdate=em.find(TravelExpense.class, travelExpenseId);
@@ -145,7 +146,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Transactional
 	public boolean deleteEmployeeExpense(int expenseId) {
 		
-//		TravelExpense travelRequest=em.find(TravelExpense.class, expenseId);
+		TravelExpense travelRequest=em.find(TravelExpense.class, expenseId);
 		Query q=em.createQuery("delete from TravelExpense  te where te.travelExpenseId=:expenseId");
 		q.setParameter("expenseId", expenseId);
 		int rowsDeleted=q.executeUpdate();

@@ -26,10 +26,10 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	@Transactional
 	public Employee AddEmployee(Employee e) {
-		String userName=e.getEmpId()+"_"+e.getEmpName();
-		Login l=new Login(userName,"Pass@123","employee");
 		
-		em.persist(l);
+		
+		
+		
 		
 		Employee newE=new Employee();
 		newE.setEmpName(e.getEmpName());
@@ -37,8 +37,15 @@ public class AdminDaoImpl implements AdminDao {
 		newE.setEmpContactNo(e.getEmpContactNo());
 		newE.setEmpMail(e.getEmpMail());
 		newE.setEmpDept(e.getEmpDept());
-		newE.setLogin(l);
+		System.out.println(newE.getEmpId());
+		
 		em.persist(newE);
+		String userName=newE.getEmpId()+"_"+newE.getEmpName();
+		Login l=new Login(userName,"Pass@123","employee");
+		em.persist(l);		
+		newE.setLogin(l);
+		em.merge(newE);
+		
 		return newE;
 	}
 
@@ -57,7 +64,7 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	public List<Employee> findAllEmployees() {
-		TypedQuery<Employee> tq=(TypedQuery<Employee>) em.createQuery("select e from Employee as e");
+		TypedQuery<Employee> tq=(TypedQuery<Employee>) em.createQuery("select e from Employee as e order by e.empId");
 		List<Employee> e=tq.getResultList();
 	
 		return e;

@@ -9,4 +9,5 @@ import com.lti.travelmanagement.beans.TravelRequest;
 public interface EmployeeDao {
 	Employee addEmployee(Employee e);
 	public Set<TravelRequest> findAllTravelRequests(int empid);
+	
 }

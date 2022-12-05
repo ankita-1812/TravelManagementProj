@@ -56,6 +56,24 @@ public class TravelRequest {
 
 	public TravelRequest(int travelRequestId, String travelRequestDate, String travelRequestStatus,
 			String travelRequestStartDate, String travelRequestEndDate, String travelRequestReason,
+			String destinationFrom, String destinationTo, double estimatedExpense, String modeOfTravel) {
+		super();
+		this.travelRequestId = travelRequestId;
+		this.travelRequestDate = travelRequestDate;
+		this.travelRequestStatus = travelRequestStatus;
+		this.travelRequestStartDate = travelRequestStartDate;
+		this.travelRequestEndDate = travelRequestEndDate;
+		this.travelRequestReason = travelRequestReason;
+		this.destinationFrom = destinationFrom;
+		this.destinationTo = destinationTo;
+		this.estimatedExpense = estimatedExpense;
+		this.modeOfTravel = modeOfTravel;
+	}
+
+
+
+	public TravelRequest(int travelRequestId, String travelRequestDate, String travelRequestStatus,
+			String travelRequestStartDate, String travelRequestEndDate, String travelRequestReason,
 			String destinationFrom, String destinationTo, double estimatedExpense, String modeOfTravel,
 			Employee employee) {
 		super();

@@ -15,7 +15,7 @@ import com.lti.travelmanagement.exceptions.RequestNotFoundException;
 import com.lti.travelmanagement.services.TravelExpenseService;
 import com.lti.travelmanagement.services.TravelRequestService;
 
-@CrossOrigin("*")
+@CrossOrigin("*")  
 @RestController
 @RequestMapping("/travelrequest")
 public class TravelRequestController {
