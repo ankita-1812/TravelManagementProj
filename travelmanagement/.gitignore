@@ -20,6 +20,7 @@ target/
 *.ipr
 
 ### NetBeans ###
+/Dockerfile
 /nbproject/private/
 /nbbuild/
 /dist/

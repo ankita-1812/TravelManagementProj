@@ -61,7 +61,6 @@ public class AdminDaoImpl implements AdminDao {
 		return true;
 	}
 
-
 	@Override
 	public List<Employee> findAllEmployees() {
 		TypedQuery<Employee> tq=(TypedQuery<Employee>) em.createQuery("select e from Employee as e order by e.empId");
