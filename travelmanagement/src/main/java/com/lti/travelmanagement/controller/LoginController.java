@@ -28,7 +28,7 @@ public class LoginController {
 		return loginService.updatePassword(userName,login);
 	}
 
-	@GetMapping("checkidentity/employee/{username}/{password}/{userType}")
+		@GetMapping("checkidentity/employee/{username}/{password}/{userType}")
 	public Employee checkEmployeeExist(@PathVariable("username") String userName,@PathVariable("password") String password,@PathVariable("userType") String userType) {
 	try {
 		return loginService.checkEmployeeExist(userName,password,userType);
